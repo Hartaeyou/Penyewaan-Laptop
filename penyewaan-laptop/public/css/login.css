@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+*{
+    font-family: 'Inter', sans-serif;
+}
+body{
+    overflow: hidden;
+}
+.header h1{
+    color: #008DDA;
+    font-family: Inter, sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.header p{
+    color: #008DDA;
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 20px;
+    }
+.login-form label{
+    color: #000;
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 20px;
+    }
+.login-form input{
+    border-radius: 8px;
+    border: 1px solid #BCBCBC;
+    background: #FFF;
+    box-sizing: border-box;
+}
+#wrongpwd{
+    color: #ff0000;
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.login-form button{
+    width: 100%;
+    height: 42px;
+    border-radius: 8px;
+
+}
+.login-form span{
+    color: #737373;
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.login-form #remember{
+    margin-top: 25px;
+}
+.login-left{
+    height:100vh;
+    width: 130vh;
+    background-image: url("../img/Wave Texture.png");
+}
+.login-right{
+    height:100vh;
+    width:100vh;
+}

@@ -1,0 +1,90 @@
+body {
+    font-size: 16px;
+
+}
+
+#content {
+    width: 100%;
+    position: relative;
+    margin-right: 0;
+}
+
+#viewport {
+    padding-left: 250px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+
+#sidebar {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 250px;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: #0275d8;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#sidebar header {
+    background:#014c8c;
+    font-size: 25px;
+    line-height: 52px;
+    text-align: center;
+}
+
+#sidebar header a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    font-weight: 600;
+}
+
+#sidebar header a:hover {
+    color: #fff;
+}
+
+#sidebar .nav a {
+    background: none;
+    border-bottom: 1px solid white;
+    color: #cfd8dc;
+    font-size: 20px;
+    padding: 16px 24px;
+    text-decoration: none;
+    display: block;
+    font-weight: bold
+}
+
+#sidebar .nav a:hover {
+    background: none;
+    color: #eceff1;
+}
+
+.nav li{
+    width: 100%;
+    text-align: left;
+}
+
+.nav li.logout{
+    position: absolute;
+    bottom: 0;
+}
+
+.modalButton{
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    color: black;
+    text-decoration: none
+}
+.modalButton:hover{
+    font-weight: 500;
+    transition : .5 ease-in-out
+}
