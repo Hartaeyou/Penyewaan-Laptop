@@ -1,54 +1,71 @@
 <!-- Button trigger modal -->
 
 @if($unit->status == "Not Available" )
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $unit->id }}" disabled>
-    Pesan 
-</button>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $unit->id }}"
+        disabled>
+        Pesan
+    </button>
 @else
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $unit->id }}" >
-    Pesan 
-</button>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+        data-bs-target="#exampleModal{{ $unit->id }}">
+        Pesan
+    </button>
 @endif
 
+
+
 <!-- Modal -->
-<div class="modal modal-lg fade" id="exampleModal{{ $unit->id }}" tabindex="-1" aria-labelledby="exampleModalLabel{{ $unit->id }}" aria-hidden="true">
+<div class="modal modal-lg fade" id="exampleModal{{ $unit->id }}" tabindex="-1"
+    aria-labelledby="exampleModalLabel{{ $unit->id }}" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel{{ $unit->id }}">Peminjaman Laptop {{ $unit -> name }}</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel{{ $unit->id }}">Peminjaman Laptop
+                    {{ $unit -> name }}</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-
                 <div class="mb-3">
                     <label for="NameLoan" class="form-label">Nama Peminjam</label>
-                    <input type="text" class="form-control" id="NameLoan" value="{{ Auth::user()->name }}" name="NameLoan" disabled>
+                    <input type="text" class="form-control" id="NameLoan" value="{{ Auth::user()->name }}"
+                        name="NameLoan" readonly>
                 </div>
                 <div class="mb-3">
                     <label for="LaptopName" class="form-label">Nama Laptop</label>
-                    <input type="text" class="form-control" id="LaptopName" value="{{ $unit -> name }}" name="LaptopName" disabled>
+                    <input type="text" class="form-control" id="LaptopName" value="{{ $unit -> name }}"
+                        name="LaptopName" readonly>
                 </div>
                 <div class="mb-3">
                     <label for="LaptopCategory" class="form-label">Kategori Laptop</label>
-                    <input type="text" class="form-control" id="LaptopCategory" value="{{ $unit->category->name }}" name="LaptopCategory" disabled>
+                    <input type="text" class="form-control" id="LaptopCategory" value="{{ $unit->category->name }}"
+                        name="LaptopCategory" readonly>
                 </div>
                 <div class="mb-3">
                     <label for="LaptopCode" class="form-label">Kode Laptop</label>
-                    <input type="text" class="form-control" id="LaptopCode" value="{{ $unit->code }}" name="LaptopCode" disabled>
+                    <input type="text" class="form-control" id="LaptopCode" value="{{ $unit->code }}"
+                        name="LaptopCode" readonly>
                 </div>
+
                 <form action="{{ route('peminjaman', Auth::user()->id) }}" method="post">
                     @csrf
+                    <div class="mb-3">
+                        <label for="LaptopPrice" class="form-label">Harga Pinjam Laptop</label>
+                        <input type="text" class="form-control" id="LaptopPrice{{ $unit->id }}"
+                            value="{{ $unit->price }}" name="LaptopPrice" readonly>
+                    </div>
                     <input type="hidden" name="user_id" class="form-control" value="{{ Auth::user()->id }}"
                         name="Loaner">
                     <input type="hidden" name="unit_id" class="form-control" value="{{ $unit->id }}"
                         name="LaptopLoan">
                     <div class="mb-3">
-                        <label for="tanggalPinjam" class="form-label">Tanggal Peminjaman</label>
-                        <input type="date" class="form-control" id="tanggalPinjam{{ $unit->id }}" name="tanggalPinjam" onchange="setMinReturnDate({{ $unit->id }})">
+                        <label for="tanggalPinjam" class="form-label">Tanggal Peminjaman <span class="text-danger">*</span></label>
+                        <input type="date" class="form-control" id="tanggalPinjam{{ $unit->id }}" name="tanggalPinjam"
+                            onchange="setMinReturnDate({{ $unit->id }})">
                     </div>
                     <div class="mb-3">
-                        <label for="tanggalKembali" class="form-label">Tanggal Pengembalian</label>
-                        <input type="date" class="form-control" id="tanggalKembali{{ $unit->id }}" name="tanggalKembali">
+                        <label for="tanggalKembali" class="form-label">Tanggal Pengembalian <span class="text-danger">*</span></label>
+                        <input type="date" class="form-control" id="tanggalKembali{{ $unit->id }}"
+                            name="tanggalKembali">
                     </div>
             </div>
             <div class="modal-footer">
@@ -78,4 +95,6 @@
             tanggalKembaliInput.removeAttribute('min');
         }
     }
+
+
 </script>

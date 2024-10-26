@@ -2,7 +2,8 @@
 @section('title', 'dahboardUnit')
 @section('content')
 <table class="table border mt-5">
-    <a href="{{ route('viewAddUnit') }}" class="btn btn-primary mb-3">Add Unit</a>
+    <h1>Unit</h1>
+    <a href="{{ route('viewAddUnit') }}" class="btn btn-primary mb-3 mt-2">Add Unit</a>
     <thead class="text-center">
         <tr>
             <th scope="col">Nomor</th>
@@ -19,17 +20,16 @@
         @foreach ($units as $key =>$unit)
         <tr>
         <th scope="row">{{ $key + 1 }}</th>
-        <td>{{ $unit->category->name  }}</td> <!-- Display category name -->
-        <td>{{ $unit->code }}</td> <!-- Assuming this is the code -->
-        <td>{{ $unit->name }}</td> <!-- Assuming this is the name -->
-        <td>{{ $unit->price }}</td> <!-- Assuming this is the price -->
-        <td>{{ $unit->status }}</td> <!-- Assuming this is the status -->
-        <td>{{ $unit->description }}</td> <!-- Assuming this is the description -->
+        <td>{{ $unit->category->name  }}</td>
+        <td>{{ $unit->code }}</td> 
+        <td>{{ $unit->name }}</td> 
+        <td>{{ $unit->price }}</td> 
+        <td>{{ $unit->status }}</td> 
+        <td>{{ $unit->description }}</td>
         <td class="d-flex justify-content-center align-items-center">
-            <a href="#" class="btn btn-warning mx-1">Edit</a>
-            <a href="{{ route('deleteUnit', $units->id) }}" class="btn btn-danger mx-1">delete</a>
+            <a href="{{ route('viewEditUnit', $unit->id) }}" class="btn btn-warning mx-1">Edit</a>
+            <a href="{{ route('deleteUnit', $unit->id) }}" class="btn btn-danger mx-1">delete</a>
         </td>
-        
         </tr>
         @endforeach
     </tbody>

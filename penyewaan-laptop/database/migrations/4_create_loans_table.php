@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('status');
             $table->date('borrow_date');
             $table->date('due_date');
+            $table->integer('deliver_price')->nullable();
             $table->timestamps();
         });
     }

@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use App\Models\Unit;
+use App\Models\User;
+use App\Models\ReturnLoan;
 use Illuminate\Database\Eloquent\Model;
-
 class Loan extends Model
 {
     protected $table = 'loans';
@@ -14,6 +15,7 @@ class Loan extends Model
         'unit_id',
         'borrow_date',
         'due_date',
+        'deliver_price',
         'status'
     ];
 

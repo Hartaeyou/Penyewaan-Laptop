@@ -6,6 +6,7 @@
             <th scope="col">Kode Laptop</th>
             <th scope="col">Tanggal Peminjaman</th>
             <th scope="col">Tanggal Pengembalian</th>
+            <th scope="col">Harga Disewa</th>
             <th scope="col">Status</th>
             <th scope="col">Action</th>
         </tr>
@@ -18,8 +19,10 @@
             <td>{{ $loanData->unit->code }}</td>
             <td>{{ $loanData->borrow_date }}</td>
             <td>{{ $loanData->due_date }}</td>
+            <td>{{ $loanData->deliver_price }}</td>
             <td>{{ $loanData->status }}</td>
-            <td>@include('HistoryPinjaman.components.modal')</td>
+            <td>@include('HistoryPinjaman.components.modal')
+            </td>
         </tr>
         @endforeach
     </tbody>

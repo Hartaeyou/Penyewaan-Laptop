@@ -1,16 +1,27 @@
-
 @if($loanData->status == "Approved" )
-<button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $loanData->id }}">
-    Return
-</button>
+    <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal"
+        data-bs-target="#exampleModal{{ $loanData->id }}">
+        Return
+    </button>
+@elseif($loanData->status == "returned")
+    <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal"
+        data-bs-target="#exampleModalDetail{{ $loanData->id }}">
+        Detail
+    </button>
+    @include('HistoryPinjaman.components.modalDetail')
+
+</div>
+
 @else
-<button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $loanData->id }}" disabled>
-    Return
-</button>
+    <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal"
+        data-bs-target="#exampleModal{{ $loanData->id }}" disabled>
+        Return
+    </button>
 @endif
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal{{ $loanData->id }}" tabindex="-1" aria-labelledby="exampleModalLabel{{ $loanData->id }}" aria-hidden="true">
+<!-- Modal Return -->
+<div class="modal fade" id="exampleModal{{ $loanData->id }}" tabindex="-1"
+    aria-labelledby="exampleModalLabel{{ $loanData->id }}" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -22,8 +33,11 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                <a href="{{ route('returnLaptop', $loanData->id) }}" type="button" class="btn btn-success">Iya</a>
+                <a href="{{ route('returnLaptop', $loanData->id) }}" type="button"
+                    class="btn btn-success">Iya</a>
             </div>
         </div>
     </div>
 </div>
+
+

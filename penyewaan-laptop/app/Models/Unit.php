@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Unit extends Model
 {
+
     protected $table = "units";
     protected $fillable = ["name", "code", "description", "status", "price", "category_id"];
     public function category()

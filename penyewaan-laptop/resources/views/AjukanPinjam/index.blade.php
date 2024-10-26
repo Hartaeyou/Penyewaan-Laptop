@@ -10,7 +10,8 @@
                 <div class="row mt-3">
                     <div class="col-md-4">
                         <form action="{{ route('loan') }}">
-                            <input type="search" class="form-control" name="search" id="inlineFormInputGroup" placeholder="Search....">
+                            <input type="search" class="form-control" name="search" id="inlineFormInputGroup"
+                                placeholder="Search....">
                         </form>
                     </div>
                     <div class="col-md-8">

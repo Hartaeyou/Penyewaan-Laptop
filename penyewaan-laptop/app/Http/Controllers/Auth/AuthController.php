@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -28,21 +29,50 @@ class AuthController extends Controller
     }
 
     public function registerUser (Request $request)
-    {
-        $validateData = $request->validate([
+    {   
+
+        $rules = [
             'email'=>'required | unique:users',
             'password'=>'required|max:12|min:8',
             'Name' => 'required',
             'Phone' => 'required',
             'Address' => 'required',
-        ]);
+        ];
+
+        // Pesan kustom
+        $messages = [
+            'required' => 'Kolom :attribute harus diisi.',
+            'numeric' => 'Kolom :attribute harus berupa angka.',
+            'date' => 'Kolom :attribute harus berupa tanggal yang valid.',
+            'after_or_equal' => 'Kolom :attribute harus sama atau setelah :date.',
+            'min' => 'Kolom :attribute harus minimal :min karakter.',
+            'email' => 'Kolom :attribute harus berupa email yang valid.',
+        ];
+
+        $attributes = [
+            
+            "email"=>"Email",
+            "password"=>"Password",
+            "Name"=>"Nama",
+            "Phone"=>"Nomor Handphone",
+            "Address"=>"Alamat",
+        ];
+
+        // Validasi input dengan aturan dan pesan kustom
+        $validator = Validator::make($request->all(), $rules, $messages, $attributes);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
         
         $inputData = User::create([
-            'name' => $validateData['Name'],
-            'email' => $validateData['email'],
-            'password' => Hash::make($validateData['password']),
-            'phone_number' => $validateData['Phone'],
-            'address' => $validateData['Address'],
+            'name' => $request->Name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'phone_number' => $request->Phone,
+            'address' => $request->Address,
         ]);
         if($inputData){
             return redirect('/')->with("Success","Anda Telah Berhasil Registrasi, Silahkan Login");

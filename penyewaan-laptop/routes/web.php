@@ -35,6 +35,8 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/addUnit', [dashboardAdminController::class, 'viewAddUnit'])->name('viewAddUnit');
     Route::post('/addUnit', [dashboardAdminController::class, 'addUnit'])->name('addUnit');
     Route::get('/deleteUnit/{id}', [dashboardAdminController::class, 'deleteUnit'])->name('deleteUnit');
+    Route::get('/viewEditUnit/{id}', [dashboardAdminController::class, 'viewEditUnit'])->name('viewEditUnit');
+    Route::put('/updateUnit/{id}', [dashboardAdminController::class, 'updateUnit'])->name('updateUnit');
     Route::get('/viewLoan', [dashboardAdminController::class, 'viewLoan'])->name('viewLoan');
     Route::get('/approveLoan/{id}', [LoanController::class, 'approveLoan'])->name('approveLoan');
     Route::get('/rejectedLoan/{id}', [LoanController::class, 'rejectedLoan'])->name('rejectedLoan');

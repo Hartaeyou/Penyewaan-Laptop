@@ -17,6 +17,8 @@ return new class extends Migration
             $table->foreign('loan_id')->references('id')->on('loans')->onDelete('cascade');
             $table->date('return_date')->nullable();
             $table->decimal('penalty_fee', 8, 2)->nullable();
+            $table->unsignedBigInteger('admin_id');
+            $table->foreign('admin_id')->references('id')->on('admin')->onDelete('cascade');
 
             $table->timestamps();
         });

@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalToggleLabel">User Information</h1>
+                <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Informasi Pengguna</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -13,21 +13,21 @@
                         disabled value="{{ Auth::user()->email }}">
                 </div>
                 <div class="mb-3">
-                    <label for="Name" class="form-label">Name</label>
+                    <label for="Name" class="form-label">Nama</label>
                     <input type="text" class="form-control" value="{{ Auth::user()->name }}" id="Name" disabled>
                 </div>
                 <div class="mb-3">
-                    <label for="Phone" class="form-label">Phone</label>
+                    <label for="Phone" class="form-label">Nomor Telepon</label>
                     <input type="text" class="form-control" value="{{ Auth::user()->phone_number }}" id="Phone" disabled>
                 </div>
                 <div class="mb-3">
-                    <label for="Address" class="form-label">Address</label>
+                    <label for="Address" class="form-label">Alamat</label>
                     <input type="text" class="form-control" value="{{ Auth::user()->address }}" id="Address" disabled>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button class="btn btn-warning" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">
+                <button class="btn btn-warning" data-bs-target="#editProfileModal" data-bs-toggle="modal">
                     Edit
                 </button>
             </div>
