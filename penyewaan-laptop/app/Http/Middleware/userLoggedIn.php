@@ -15,7 +15,7 @@ class userLoggedIn
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Session()->has("loginUser") and (url("/")==$request->url() or url("loginAdmin")==$request->url() or url("loginUser")==$request->url() or url("registerUser")==$request->url())){
+        if((Session()->has("loginUser") or Session()->has("loginAdmin"))and (url("/")==$request->url() or url("admin")==$request->url() or url("register")==$request->url())){
             return back();
         }
         return $next($request);

@@ -17,7 +17,7 @@ use App\Http\Controllers\Peminjamanan\HistoryPeminjamanController;
 // });
 
 
-Route::middleware(['user'])->group(function () {    
+Route::middleware(['user', 'userLoggedIn'])->group(function () {    
     Route::get('/dashboardUser', [dashboardUserController::class, 'dashboardUser'])->name('dashboardUser');
     Route::post('/profile/{id}', [profileController::class, 'updateUser'])->name('updateUser');
     Route::get('/profile/{id}/delete', [profileController::class, 'deleteUser'])->name('deleteUser');
@@ -29,7 +29,7 @@ Route::middleware(['user'])->group(function () {
 });
 
 
-Route::middleware(['admin'])->group(function () {    
+Route::middleware(['admin' ])->group(function () {    
     Route::get('/dashboardAdmin', [dashboardAdminController::class, 'dashboardAdmin'])->name('dashboardAdmin');
     Route::get('/dashboardUnit', [dashboardAdminController::class, 'dashboardUnit'])->name('dashboardUnit');
     Route::get('/addUnit', [dashboardAdminController::class, 'viewAddUnit'])->name('viewAddUnit');
@@ -54,7 +54,10 @@ Route::post('/register', [AuthController::class, 'registerUser'])->name('registe
 
 
 // Route User
-Route::get('/', [AuthController::class, 'viewLoginUser'])->name('viewLoginUser');
-Route::get('/admin', [AuthController::class, 'viewLoginAdmin'])->name('viewLoginAdmin');
-Route::get('/register', [AuthController::class, 'viewRegisterUser'])->name('viewRegisterUser');
+Route::middleware(['userLoggedIn' ])->group(function () {    
+    Route::get('/', [AuthController::class, 'viewLoginUser'])->name('viewLoginUser');
+    Route::get('/admin', [AuthController::class, 'viewLoginAdmin'])->name('viewLoginAdmin');
+    Route::get('/register', [AuthController::class, 'viewRegisterUser'])->name('viewRegisterUser');
+});
+
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');

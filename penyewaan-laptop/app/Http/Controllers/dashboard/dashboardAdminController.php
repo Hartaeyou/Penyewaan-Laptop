@@ -100,10 +100,14 @@ class dashboardAdminController extends Controller
     function rejectedLoan($loan_id)
 {
     $loan = Loan::find($loan_id);
+    $Unit = Unit::find($loan->unit_id);
     
     if ($loan && $loan->status == 'pending') {
         $loan->status = 'rejected';
         $loan->save();
+
+        $Unit->update(['status' => 'Available']);   
+
         
         return redirect()->route('Dashboard.Admin.loan')->with('success', 'Loan rejected successfully!');
     }
