@@ -24,7 +24,9 @@ Laptop Choice adalah aplikasi berbasis web yang bertujuan untuk pelanggan menyew
     - User dapat Melihat Riwayat Peminjaman Laptop
 
 # Database Scheme
-![image](https://github.com/user-attachments/assets/1e8360cd-c6c0-4a57-aa53-7339b1502741)
-[SQL File](https://drive.google.com/file/d/1nM8lngPR70N6Eof-W0ja-t9TIPwhkhsn/view?usp=sharing)
+![image](https://github.com/user-attachments/assets/21bbf8b6-5842-4a4f-8427-66ad92782f55)
+
+[SQL File](https://drive.google.com/file/d/1jny_kAUxIN-Ncx81YVChbdKY055oh0P4/view?usp=sharing)
 
 # Link Video Demo
+[Video Demo](https://drive.google.com/file/d/1Fkr1S00mme3LYvJiIOwuW-wZE3DP1aYK/view?usp=sharing)
