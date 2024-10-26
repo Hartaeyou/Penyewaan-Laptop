@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\dashboard;
 
-use App\Http\Controllers\Controller;
-use App\Models\Unit;
 use App\Models\Loan;
+use App\Models\Unit;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 
 class dashboardAdminController extends Controller
 {
@@ -30,7 +31,12 @@ class dashboardAdminController extends Controller
             'description' => 'required',
             'price' => 'required',
             'category_id' => 'required|numeric',
+            'foto_product' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+        $foto_product = $request->file('foto_product');
+        $foto_ekstensi = $foto_product->extension();
+        $foto_name = time() . '.' . $foto_ekstensi;
+        $foto_product->move(public_path('img'), $foto_name);
 
         Unit::create([
             'name' => $request->name,
@@ -38,7 +44,8 @@ class dashboardAdminController extends Controller
             'description' => $request->description,
             'status' => 'Available',
             'price' => $request->price,
-            'category_id' => $request->category_id
+            'category_id' => $request->category_id,
+            'foto_product' =>$foto_name
 
         ]);
         return redirect()->route('dashboardUnit')->with('success', 'Unit created successfully.');
@@ -57,9 +64,16 @@ class dashboardAdminController extends Controller
             'description' => 'required',
             'price' => 'required|numeric',
             'category_id' => 'required|numeric',
+            'foto_product' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+
+        $foto_product = $request->file('foto_product');
+        $foto_ekstensi = $foto_product->extension();
+        $foto_name = time() . '.' . $foto_ekstensi;
+        $foto_product->move(public_path('img'), $foto_name);
     
         $units = Unit::findOrFail($id);
+        File::delete(public_path('img/' . $units->fotos_product));
         $units->update([
             'name' => $request->name,
             'code' => $request->code,
@@ -67,6 +81,7 @@ class dashboardAdminController extends Controller
             'price' => $request->price,
             'category_id' => $request->category_id,
             'status' => $request->status ?? 'Available',
+            'fotos_product' => $foto_name
         ]);
     
         return redirect()->route('dashboardUnit')->with('success', 'Unit updated successfully.');
@@ -74,6 +89,7 @@ class dashboardAdminController extends Controller
     
     function deleteUnit($id){
         $units = Unit::find($id);
+        File::delete(public_path('img/' . $units->fotos_product));
         $units->delete();
         return redirect(route('dashboardUnit'));
     }

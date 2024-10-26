@@ -15,7 +15,7 @@
         </div>
     @endif
 
-    <form action="{{ route('updateUnit', $units->id) }}" method="POST">
+    <form action="{{ route('updateUnit', $units->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="form-group">
@@ -44,6 +44,10 @@
                 <option value="Available" {{ $units->status == 'Available' ? 'selected' : '' }}>Available</option>
                 <option value="Unavailable" {{ $units->status == 'Unavailable' ? 'selected' : '' }}>Unavailable</option>
             </select>
+        </div>
+        <div class="form-group">
+            <label for="inputGroupFile01">Upload</label>
+            <input type="file" class="form-control" name="foto_product" id="inputGroupFile01">
         </div>
         <button type="submit" class="btn btn-primary">Update</button>
     </form>

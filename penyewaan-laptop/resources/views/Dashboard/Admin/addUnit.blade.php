@@ -14,7 +14,7 @@
             </div>
         @endif
 
-        <form action="{{ route('addUnit') }}" method="POST">
+        <form action="{{ route('addUnit') }}" method="POST" enctype="multipart/form-data" >
             @csrf
             <div class="form-group">
                 <label for="unit_name">Name</label>
@@ -35,6 +35,10 @@
             <div class="form-group">
                 <label for="quantity">Category</label>
                 <input type="number" name="category_id" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="inputGroupFile01">Upload</label>
+                <input type="file" class="form-control" name="foto_product" id="inputGroupFile01">
             </div>
             <button type="submit" class="btn btn-primary">Create</button>
         </form>

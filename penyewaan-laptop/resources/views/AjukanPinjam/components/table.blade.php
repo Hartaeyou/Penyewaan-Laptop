@@ -6,6 +6,7 @@
             <th scope="col">Kode</th>
             <th scope="col">Nama</th>
             <th scope="col">Harga Sewa</th>
+            <th>Gambar</th>
             <th scope="col">Status</th>
             <th scope="col">Deskripsi</th>
             <th scope="col">Action</th>
@@ -19,6 +20,9 @@
         <td>{{ $unit->code }}</td> 
         <td>{{ $unit->name }}</td> 
         <td>{{ $unit->price }}</td> 
+        <td>
+            @include('AjukanPinjam.components.modalGambar')
+        </td>
         <td>{{ $unit->status }}</td> 
         <td>{{ $unit->description }}</td> 
         <td>@include('AjukanPinjam.components.modal')</td>

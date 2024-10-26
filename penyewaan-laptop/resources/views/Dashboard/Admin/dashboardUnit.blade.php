@@ -1,8 +1,8 @@
 @extends('layout.Admin.main')
-@section('title', 'dahboardUnit')
+@section('title', 'Unit')
 @section('content')
 <table class="table border mt-5">
-    <h1>Unit</h1>
+
     <a href="{{ route('viewAddUnit') }}" class="btn btn-primary mb-3 mt-2">Add Unit</a>
     <thead class="text-center">
         <tr>

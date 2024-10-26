@@ -16,14 +16,15 @@
         @foreach ($loans as $key =>$unit)
         <tr>
         <th scope="row">{{ $key + 1 }}</th>
-        <td>{{ $unit->user->name }}</td> <!-- Assuming this is the code -->
-        <td>{{ $unit->unit->name }}</td> <!-- Assuming this is the code -->
-        <td>{{ $unit->unit->borrow_date }}</td> <!-- Assuming this is the code -->
-        <td>{{ $unit->status }}</td> <!-- Assuming this is the status -->
+        <td>{{ $unit->user->name }}</td>
+        <td>{{ $unit->unit->name }}</td> 
+        <td>{{ $unit->unit->borrow_date }}</td>
+        <td>{{ $unit->status }}</td> 
         <td class="d-flex justify-content-center align-items-center">
             <a href="{{ route('approveLoan', $unit->id) }}" class="btn btn-success mx-1">Aproved</a>
             <a href="{{ route('rejectedLoan', $unit->id) }}" class="btn btn-danger mx-1">Rejected</a>
             <a href="{{ route('viewReturnUnit', $unit->id) }}" class="btn btn-primary mx-1">Approve Return</a>
+            <a href="{{ route('pdfView', $unit->id) }}" class="btn btn-primary mx-1">History</a>
         </td>
         
         </tr>

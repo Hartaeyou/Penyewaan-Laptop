@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Profile\profileController;
 use App\Http\Controllers\Peminjamanan\loanController;
 use App\Http\Controllers\dashboard\dashboardUserController;
+use App\Http\Controllers\PDFcontroller;
 use App\Http\Controllers\dashboard\dashboardAdminController;
 use App\Http\Controllers\Peminjamanan\HistoryPeminjamanController;
 
@@ -43,6 +44,7 @@ Route::middleware(['admin' ])->group(function () {
     Route::get('/viewReturnUnit/{id}', [LoanController::class, 'viewReturnUnit'])->name('viewReturnUnit');
     Route::get('/approveReturnLaptop/{id}', [LoanController::class, 'approveReturnLaptop'])->name('accReturn');
     Route::post('/penaltyFee/{loan_id}', [LoanController::class, 'calculatePenaltyFee'])->name('penaltyFee');
+    Route::get('/pdf/{id}', [PDFcontroller::class, 'pdfView'])->name('pdfView');
 });
 
 

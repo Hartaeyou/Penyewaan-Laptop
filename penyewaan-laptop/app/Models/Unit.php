@@ -9,7 +9,7 @@ class Unit extends Model
 {
 
     protected $table = "units";
-    protected $fillable = ["name", "code", "description", "status", "price", "category_id"];
+    protected $fillable = ["name", "code", "description", "status", "price", "category_id", "foto_product"];
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');

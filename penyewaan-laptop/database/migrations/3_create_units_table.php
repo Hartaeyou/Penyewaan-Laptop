@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('status'); // 'available', 'borrowed'
             $table->integer('price'); // 'available', 'borrowed'
+            $table->string('foto_product')->nullable();
             $table->timestamps();
         });
     }
